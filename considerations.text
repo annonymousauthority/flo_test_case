@@ -1,0 +1,29 @@
+Part 1: initial design of store and retrieve
+How would you design the Bag object?
+By designing a struct to represent the Bag Object, that contains ID, Size and the type
+
+How would Bag be related to Ticket?
+A simple struct that will require the Bag ID to handle possible bag retrieval.
+
+How do you figure out storage area?
+We could use a data structure to act like a queue which represents the line of bags to be stored.
+Each time a new bag comes, we calculate if it can fit in an available bin, if not, create a new bin.
+
+How do you handle error cases, i.e. it’s full, or full for only one bag?
+By checking this conditions before storing any more bag to the bin.
+
+
+
+Part 2: Optimization of Storage and Retrieval
+
+How would you test your algorithm?
+I wrote a test in the [main_test.go] file to check for those 3 scenarios using the built-in golang test package
+
+If we scale the bins to non-trivial size, how does your algorithm performance change over time?
+If the bins are scaled to a larger size, the performance of the algorithm might degrade due to linear search for available space. We can optimize this by using more efficient Algorithms like a binary search tree to keep track of available space in the bins.
+
+Can you discuss better data structures for these operations?
+Instead of a simple list for bins, you can use more advanced data structures. For example, you could use a hashmap where the key is the bin identifier and the value is the bin's contents. This would improve retrieval time for a specific bin.
+
+Optional: What if there were four lines operating at the same time, how would you change your code to handle this?
+If there were four lines operating simultaneously, you could extend the design to have a separate set of bins for each line, or implement a more complex queuing system that assigns bags to the appropriate line's bins based on some criteria (e.g., load balancing).
